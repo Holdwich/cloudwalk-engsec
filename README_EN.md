@@ -43,7 +43,7 @@ Another thing I also went ahead and checked after, was the byte size of the requ
 
 ### My Solution
 
-To address this problem hardening the server and application security is a must, this includes validation of input, such as in Java:
+To address this problem hardening the server and application security is a must, this includes validation of input, such as in Java (see example_secure_api_implementation.java):
 
 ```
 File file = new File(BASE_DIRECTORY, userInput);
