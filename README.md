@@ -10,7 +10,7 @@ Antes de qualquer coisa, o que fiz primeiro, dado o conjunto de dados CSV, foi i
 
 Com os dados agora carregados no Grafana, a primeira coisa que fiz foi uma transformação de dados, obtendo uma contagem de todos os IPs de clientes presentes no conjunto de dados e classificando-os pelo seu IP, e foi aqui que encontrei o meu primeiro risco provável
 
-### 1. Actividades de IP e URLs invulgares
+### 1. Atividades de IP e URLs irregulares
 
 ![Evidence 2](/photos/2.png?raw=true "Evidence 2")
 
