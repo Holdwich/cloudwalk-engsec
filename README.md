@@ -56,7 +56,7 @@ e usar ferramentas SAST para garantir que o aplicativo do servidor siga os padr�
 
 um WAF (Web Application Firewall) também pode ser usado para bloquear/desacelerar o tráfego anômalo, e um IDS/IPS também pode ser crucial para identificar e impedir quaisquer acessos anômalos ao servidor
 
-### 2. Monitorização geográfica
+### 2. Monitoramento Geográfico
 
 Em seguida, passei a verificar o sinalizador ClientCountry, contando cada vez que um país aparece, tentando identificar se há um padrão entre os atacantes e os países
 
