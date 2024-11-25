@@ -6,19 +6,19 @@ Esta é a minha resposta ao teste Cloudwalk EngSec, que irá descrever o meu pro
 
 Antes de qualquer coisa, o que fiz primeiro, dado o conjunto de dados CSV, foi instalar o Grafana e usá-lo para interpretar o CSV com o plugin infinity.
 
-![Evidência 1](/photos/1.png?raw=true “Evidência 1”)
+![Evidence 1](/photos/1.png?raw=true "Evidence 1")
 
 Com os dados agora carregados no Grafana, a primeira coisa que fiz foi uma transformação de dados, obtendo uma contagem de todos os IPs de clientes presentes no conjunto de dados e classificando-os pelo seu IP, e foi aqui que encontrei o meu primeiro risco provável
 
 ### 1. Actividades de IP e URLs invulgares
 
-![Evidência 2](/photos/2.png?raw=true “Evidência 2”)
+![Evidence 2](/photos/2.png?raw=true "Evidence 2")
 
 Muitos IPs só acederam ao servidor uma vez, mas alguns outliers acederam ao servidor mais de 100 vezes, com o IP **53.153.77.110** acessando ao servidor **156 vezes**
 
 Embora isto, por si só, possa não ser certamente um indicador de um incidente de segurança, aponta para atividades anômalas
 
-![Evidência 3](/photos/3.png?raw=true “Evidência 3”)
+![Evidence 3](/photos/3.png?raw=true "Evidence 3")
 
 Os acessos parecem não seguir um padrão sobre “quando” acessam ao servidor, mas têm algo em comum, todos acessam ao mesmo endpoint (/write/toward/story) exceto alguns pedidos que são suspeitos
 
@@ -27,19 +27,19 @@ Pedidos 2, 3 e 4 = ```/<marquee><img src=1 onerror=alert(1)></marquee>, /“;!--
 
 Estes tipos de pedidos repetem-se mais do que uma vez, tudo isto aponta para um malfeitor
 
-![Evidência 4](/photos/4.png?raw=true “Evidência 4”)
+![Evidence 4](/photos/4.png?raw=true "Evidence 4")
 
 Depois, continuei a verificar estes caminhos, quantas vezes aparecem, contando estes caminhos e ordenando-os por cada tipo de pedido
 
-![Evidência 5](/fotos/5.png?raw=true “Evidência 5”)
+![Evidence 5](/photos/5.png?raw=true "Evidence 5")
 
 Podemos ver que há muitas tentativas do gênero, e provenientes de diferentes IPs
 
-![Evidência 6](/fotos/6.png?raw=true “Evidência 6”)
+![Evidence 6](/photos/6.png?raw=true "Evidence 6")
 
 Outra coisa que também verifiquei depois, foi o tamanho em bytes do pedido, com certeza, dando-me mais provas de tentativas de acesso ao servidor e de exfiltração de dados
 
-![Evidência 9](/photos/9.png?raw=true “Evidência 9”)
+![Evidence 9](/photos/9.png?raw=true "Evidence 9")
 
 ### Minha solução
 
@@ -62,7 +62,7 @@ Em seguida, passei a verificar o sinalizador ClientCountry, contando cada vez qu
 
 Embora eu não tenha encontrado nada de substancial, encontrei algo:
 
-![Evidência 7](/photos/7.png?raw=true “Evidência 7”)
+![Evidence 7](/photos/7.png?raw=true "Evidence 7")
 
 A maioria destas regiões de acesso são comuns, mas cn, China, é considerado um país de risco, e o seu bloqueio deve ser considerado
 
@@ -82,7 +82,7 @@ Em seguida, passei a verificar as portas, um vetor comum de ataque
 
 Fazendo a mesma análise de contagem e resumo das portas utilizadas, pude constatar que vários acessos utilizaram portas diferentes, mas uma delas se destacou para mim, a porta **0**
 
-![Evidência 8](/photos/8.png?raw=true “Evidência 8”)
+![Evidence 8](/photos/8.png?raw=true "Evidence 8")
 
 Embora seja necessária uma análise e um contexto mais profundos para determinar quais portas são de fato necessárias para o funcionamento adequado do servidor, 0 não é uma delas
 
