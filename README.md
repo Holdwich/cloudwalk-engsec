@@ -43,7 +43,7 @@ Outra coisa que também verifiquei depois, foi o tamanho em bytes do pedido, com
 
 ### Minha solução
 
-Para resolver este problema, é necessário reforçar a segurança do servidor e da aplicação, o que inclui a validação da entrada, como em Java:
+Para resolver este problema, é necessário reforçar a segurança do servidor e da aplicação, o que inclui a validação da entrada, como em Java (veja example_secure_api_implementation.java):
 
 ```
 File file = new File(BASE_DIRECTORY, userInput);
