@@ -6,19 +6,19 @@ This is my answer to the Cloudwalk EngSec test, this will describe my thinking p
 
 First of all, what i did first, given the CSV dataset, was install Grafana, and use it to interpret the CSV with the infinity plugin.
 
-(img 1 here)
+![Evidence 1](/photos/1.png?raw=true "Evidence 1")
 
 With the data now loaded into Grafana, first thing i did was some data transformation, achieving a count of all the client IPs present in the dataset, and sorting them by their IP, and here is where i found my first probable risk
 
 ### 1. Unusual IP activities and URLs
 
-(img 2 here)
+![Evidence 2](/photos/2.png?raw=true "Evidence 2")
 
 Many IPs only accessed the server once, but some outliers accessed the server upwards of 100 times, with the IP **53.153.77.110** accessing the server **156 times**
 
 While this, by itself, might not be certainly a indicator of a security incident, it points towards anomalous activities
 
-(img 3 here)
+![Evidence 3](/photos/3.png?raw=true "Evidence 3")
 
 The accesses seem not to follow a pattern on "when" they access the server, but they do have something in common, they all access they same endpoint (/write/toward/story) except for a few requests that are suspicious
 
@@ -27,19 +27,19 @@ Request 2, 3 and 4 = ```/<marquee><img src=1 onerror=alert(1)></marquee>, /";!--
 
 These requests types repeat more than once, all of this, points to a bad actor
 
-(img 4 here)
+![Evidence 4](/photos/4.png?raw=true "Evidence 4")
 
 Then, i went on to check these paths, how many times they appear, by counting these paths, and sorting them by each type of request
 
-(img 5 here)
+![Evidence 5](/photos/5.png?raw=true "Evidence 5")
 
 We can see that there are many attempts of the kind, and coming from different IPs
 
-(img 6 here)
+![Evidence 6](/photos/6.png?raw=true "Evidence 6")
 
-Another thing i also went ahead and checked after, was the byte size of the request, sure enough, giving me more evidence of attempts to access the server and exfiltrate data
+Another thing I also went ahead and checked after, was the byte size of the request, sure enough, giving me more evidence of attempts to access the server and exfiltrate data
 
-(img 9 here)
+![Evidence 9](/photos/9.png?raw=true "Evidence 9")
 
 ### My Solution
 
@@ -62,7 +62,7 @@ Next, i went on to check the ClientCountry flag, counting each time that a count
 
 While nothing of substance was found by me, i did find something:
 
-(img 7 here)
+![Evidence 7](/photos/7.png?raw=true "Evidence 7")
 
 Most of these regions of access are common, but cn, China, is considered a risk country, and thus, blocking it should be considered
 
@@ -82,7 +82,7 @@ Next, i went on to check the ports, a common vector of attack
 
 By doing the same analysis of counting and summarizing the ports used, i could find that various accesses used different ports, but one of them stood out to me, Port **0**
 
-(img 8 here)
+![Evidence 8](/photos/8.png?raw=true "Evidence 8")
 
 While a deeper analysis and context is needed to determine which ports are indeed needed for the appropriate functioning of the server, 0 is not one of them
 
